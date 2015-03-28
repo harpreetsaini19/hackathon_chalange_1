@@ -46,7 +46,7 @@ class ProductRetailsController < ApplicationController
     if params[:search].blank?
       @results = []
     else
-      @results = ProductRetail.joins(:product_retail_offers).select("product_retails.* ,product_retail_offers.offer,product_retail_offers.discounted_price").where("product_retails.product_name like ?",'%'+params[:search].to_s+'%').order("product_retail_offers.discounted_price")
+      @results = ProductRetail.joins("LEFT JOIN product_retail_offers on product_retails.id = product_retail_offers.product_retail_id").select("product_retails.* ,product_retail_offers.offer,product_retail_offers.discounted_price").where("product_retails.product_name like ?",'%'+params[:search].to_s+'%').order("product_retail_offers.discounted_price")
     end
   end
 

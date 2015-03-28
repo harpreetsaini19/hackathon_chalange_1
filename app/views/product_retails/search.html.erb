@@ -38,7 +38,7 @@
                   <%=result["offer"]%>
                 </td>
                 <td>
-                  <b>Rs <%=result["discounted_price"]%></b>
+                  <b><%if result["discounted_price"]%> Rs <%=result["discounted_price"]%> <%else%> <%end%></b>
                 </td>
               </tr>
           <%end%>
