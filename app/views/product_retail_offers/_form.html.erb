@@ -1,0 +1,36 @@
+<%= form_for(@product_retail_offer) do |f| %>
+  <% flash.each do |key,message| %>
+    <div id="error_explanation">
+    <%=message%>
+    </div>
+  <%end%>
+  <% if @product_retail_offer.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@product_retail_offer.errors.count, "error") %> prohibited this product_retail_offer from being saved:</h2>
+
+      <ul>
+      <% @product_retail_offer.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <%= f.hidden_field :product_retail_id, :value => @product_retail.id%>
+  <%= f.hidden_field :base_price, :value => @product_retail.base_price%>
+  <div class="field">
+    <%= f.label :offer %><br>
+    <%= f.text_field :offer, :maxlength => 1 %>
+  </div>
+  <div class="valid_offers">
+    <ul>
+    <%@valid_offers.each do|key,value|%>
+      <li>
+        <%=key%> : <%=value%>
+      </li>
+    <%end%>
+    </ul>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

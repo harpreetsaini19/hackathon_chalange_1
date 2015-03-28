@@ -1,0 +1,36 @@
+<h1>Listing product_retails</h1>
+  <% flash.each do |key,message| %>
+    <div id="error_explanation">
+    <%=message%>
+    </div>
+  <%end%>
+<table>
+  <thead>
+    <tr>
+      <th>Product name</th>
+      <th>Retail name</th>
+      <th>Base price</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @product_retails.each do |product_retail| %>
+      <tr>
+        <td><%= product_retail.product_name %></td>
+        <td><%= product_retail.retail_name %></td>
+        <td><%= product_retail.base_price %></td>
+        <td><%= link_to 'Add offer', add_product_retail_offers_path(product_retail.id) %></td>
+        <td><%= link_to 'View offer', view_product_retail_offers_path(product_retail.id) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Product retail', new_product_retail_path %>

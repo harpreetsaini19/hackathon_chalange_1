@@ -1,0 +1,24 @@
+<h1><%= @product_retail.product_name%></h1>
+<h3>Base Price: Rs <%= @product_retail.base_price%></h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>Offer</th>
+      <th>Expiry</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @product_retail_offers.each do |product_retail_offer| %>
+      <tr>
+        <td><%= product_retail_offer.offer %></td>
+        <td><%= product_retail_offer.discounted_price %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'All Products', product_retails_path %>

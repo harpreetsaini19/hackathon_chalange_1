@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  product_retail_id: 1
+  base_price: 1.5
+  offer: MyString
+  expiry: 2015-03-28 12:35:02
+  discounted_price: 1.5
+
+two:
+  product_retail_id: 1
+  base_price: 1.5
+  offer: MyString
+  expiry: 2015-03-28 12:35:02
+  discounted_price: 1.5
