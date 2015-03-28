@@ -2,9 +2,12 @@ Challenge1::Application.routes.draw do
 
   resources :product_retails
 
+  get 'search', to: "product_retails#search", as: "search"
   post 'product_retail/:product_retail_id/product_retail_offers', to: "product_retail_offers#create", as: "product_retail_offers"
   get 'product_retail/:product_retail_id/add_offer', to: "product_retail_offers#new", as: "add_product_retail_offers"
   get 'product_retail/:product_retail_id/view_offer', to: "product_retail_offers#index", as: "view_product_retail_offers"
+
+  root "product_retails#search"
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

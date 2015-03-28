@@ -3,7 +3,6 @@ class ProductRetailOffersController < ApplicationController
   NOT_EXIST = "This product does not exist"
   OFFER_NOT_VALID = "This offer is not valid"
 
-  # GET /product_retail_offers/new
   def new
     @product_retail_offer = ProductRetailOffer.new
     @valid_offers = valid_offers
@@ -21,9 +20,7 @@ class ProductRetailOffersController < ApplicationController
       redirect_to product_retails_path, alert: NOT_EXIST
     end
   end
-
-  # POST /product_retail_offers
-  # POST /product_retail_offers.json
+  
   def create
     @product_retail_offer = ProductRetailOffer.new(product_retail_offer_params)
     discounted_price, offer = return_price(@product_retail_offer.base_price,@product_retail_offer.offer)

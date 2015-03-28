@@ -2,28 +2,20 @@ class ProductRetailsController < ApplicationController
   before_action :set_product_retail, only: [:show, :edit, :update, :destroy]
   EMPTY_SEARCH = "Search box is empty."
 
-  # GET /product_retails
-  # GET /product_retails.json
   def index
     @product_retails = ProductRetail.all
   end
 
-  # GET /product_retails/1
-  # GET /product_retails/1.json
   def show
   end
 
-  # GET /product_retails/new
   def new
     @product_retail = ProductRetail.new
   end
 
-  # GET /product_retails/1/edit
   def edit
   end
 
-  # POST /product_retails
-  # POST /product_retails.json
   def create
     @product_retail = ProductRetail.new(product_retail_params)
 
@@ -38,8 +30,6 @@ class ProductRetailsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /product_retails/1
-  # PATCH/PUT /product_retails/1.json
   def update
     respond_to do |format|
       if @product_retail.update(product_retail_params)
@@ -54,7 +44,9 @@ class ProductRetailsController < ApplicationController
 
   def search
     if params[:search].blank?
-      redirect_to search_path, alert: EMPTY_SEARCH
+      @results = []
+    else
+      @results = ProductRetail.joins(:product_retail_offers).select("product_retails.* ,product_retail_offers.offer,product_retail_offers.discounted_price").where("product_retails.product_name like ?",'%'+params[:search].to_s+'%').order("product_retail_offers.discounted_price")
     end
   end
 

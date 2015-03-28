@@ -1,0 +1,48 @@
+<br/>
+<br/>
+<b><i>Create records pasting "<%=request.host.to_s+":"+request.port.to_s%>/product_retails" in the address bar.</i></b>
+
+<div class="search_bar">
+  <%= form_tag(root_url,method: "get" ) do %>
+    <%= text_field_tag('search',nil, :placeholder=> "Search here.") %> 
+    <%= button_tag(type: "submit") do %> Search <%end%>
+  <%end%>
+  <div class="out">
+    <%if @results.empty? %>
+      No results found <br/>
+      <b>Please create records pasting "<%=request.host.to_s+":"+request.port.to_s%>/product_retails" in the address bar.</b>
+    <%else%>
+      <table>
+        <thead>
+          <tr>
+            <th>Product name</th>
+            <th>Retail name</th>
+            <th>Base price</th>
+            <th>Offer</th>
+            <th>Discounted Price</th>
+          </tr>
+        </thead>
+        <tbody>
+          <%@results.each do|result|%>
+              <tr>
+                <td>
+                  <%=result["product_name"]%>
+                </td>
+                <td>
+                  <%=result["retail_name"]%>
+                </td>
+                <td>
+                  <%=result["base_price"]%>
+                </td>
+                <td>
+                  <%=result["offer"]%>
+                </td>
+                <td>
+                  <%=result["discounted_price"]%>
+                </td>
+              </tr>
+          <%end%>
+       </tbody>
+    <%end%>
+  </table>
+</div>
